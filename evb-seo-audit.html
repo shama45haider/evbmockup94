@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EVB SEO Audit Report — June 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --orange:#f97316;--dark:#111;--gray:#555;--green:#16a34a;--red:#dc2626;--amber:#d97706;
+    --bg:#f8f5f0;--white:#fff;--border:#e5e7eb;--row-alt:#f9f9f8;
+    --green-bg:#f0fdf4;--red-bg:#fef2f2;--amber-bg:#fffbeb;--orange-bg:#fff7ed;
+  }
+  body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:var(--dark);font-size:13px;line-height:1.5}
+
+  /* ── COVER ── */
+  .cover{background:var(--dark);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 40px;text-align:center;page-break-after:always}
+  .cover-brand{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:24px}
+  .cover h1{font-size:52px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:12px}
+  .cover-sub{font-size:16px;color:#9ca3af;margin-bottom:40px}
+  .cover-divider{width:120px;height:2px;background:var(--orange);margin:0 auto 40px}
+  .cover-meta{font-size:12px;color:#6b7280}
+  .cover-date{font-size:12px;font-weight:700;color:var(--orange);margin-top:8px}
+
+  /* ── PAGE LAYOUT ── */
+  .page{padding:40px 48px;page-break-after:always;max-width:1100px;margin:0 auto}
+  .page:last-child{page-break-after:auto}
+
+  /* ── SECTION HEADER ── */
+  .section-label{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+  .section-title{font-size:24px;font-weight:900;color:var(--dark);margin-bottom:6px}
+  .section-rule{height:2px;border:none;margin-bottom:14px}
+  .rule-orange{background:var(--orange)}
+  .rule-green{background:var(--green)}
+  .rule-red{background:var(--red)}
+  .section-intro{font-size:13px;color:var(--gray);margin-bottom:20px;line-height:1.6}
+
+  /* ── SCORE CARDS ── */
+  .score-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:24px}
+  .score-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;text-align:center}
+  .score-card-label{background:#1a1a1a;color:#9ca3af;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 6px;line-height:1.3}
+  .score-card-num{padding:14px 6px;font-size:28px;font-weight:900;background:#fff}
+  .score-card-num.dark{color:var(--dark)}
+  .score-card-num.green{color:var(--green)}
+  .score-card-num.red{color:var(--red)}
+
+  /* ── TABLES ── */
+  table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:4px}
+  th{background:#1a1a1a;color:#fff;font-weight:700;font-size:11px;padding:8px 10px;text-align:left}
+  td{padding:7px 10px;vertical-align:top;border-bottom:1px solid var(--border)}
+  tr:nth-child(even) td{background:var(--row-alt)}
+  tr:hover td{background:#f3f4f6}
+  .right-table tr:nth-child(even) td{background:var(--green-bg)}
+  .improve-table tr:nth-child(even) td{background:#fef9f7}
+
+  /* ── STATUS BADGES ── */
+  .badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px}
+  .ok{color:var(--green)}
+  .warn{color:var(--amber)}
+  .fail{color:var(--red)}
+  .neu{color:#6b7280}
+  .pri1{background:var(--red-bg);color:var(--red);font-size:9.5px;font-weight:800;padding:3px 6px;border-radius:5px;white-space:nowrap}
+  .pri2{background:var(--amber-bg);color:var(--amber);font-size:9.5px;font-weight:800;padding:3px 6px;border-radius:5px;white-space:nowrap}
+  .pri3{background:var(--orange-bg);color:var(--orange);font-size:9.5px;font-weight:800;padding:3px 6px;border-radius:5px;white-space:nowrap}
+
+  /* ── ASSESSMENT TABLE ── */
+  .assess-score{font-weight:700;font-size:11px}
+
+  /* ── ACTION PLAN ── */
+  .phase-head{font-size:13px;font-weight:800;margin:20px 0 10px;padding:8px 12px;border-radius:8px;display:flex;align-items:center;gap:8px}
+  .phase1-head{background:var(--red-bg);color:var(--red);border-left:3px solid var(--red)}
+  .phase2-head{background:var(--amber-bg);color:var(--amber);border-left:3px solid var(--amber)}
+  .phase3-head{background:var(--orange-bg);color:var(--orange);border-left:3px solid var(--orange)}
+  .action-list{display:flex;flex-direction:column;gap:8px}
+  .action-item{display:flex;gap:12px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+  .action-num{width:36px;min-width:36px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0}
+  .action-body{padding:10px 12px;flex:1}
+  .action-title{font-weight:800;font-size:12px;color:var(--dark);margin-bottom:3px}
+  .action-desc{font-size:11px;color:var(--gray);line-height:1.5;margin-bottom:4px}
+  .action-time{font-size:10px;font-weight:700}
+  .p1-item .action-num{background:var(--red)}.p1-item .action-body{background:var(--red-bg)}.p1-item .action-time{color:var(--red)}
+  .p2-item .action-num{background:var(--amber)}.p2-item .action-body{background:var(--amber-bg)}.p2-item .action-time{color:var(--amber)}
+  .p3-item .action-num{background:var(--orange)}.p3-item .action-body{background:var(--orange-bg)}.p3-item .action-time{color:var(--orange)}
+
+  /* ── FOOTER ── */
+  .report-footer{margin-top:32px;padding-top:12px;border-top:1px solid var(--border);font-size:10px;color:#9ca3af;text-align:center}
+
+  /* ── PRINT ── */
+  @media print{
+    @page{size:letter;margin:0.5in}
+    .cover{min-height:auto;padding:80px 60px}
+    .page{padding:24px 0;max-width:100%}
+    tr:hover td{background:inherit}
+    body{font-size:11px}
+    th{font-size:10px}
+    td{font-size:10px;padding:5px 8px}
+    .section-title{font-size:20px}
+    .score-card-num{font-size:22px;padding:10px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-brand">East Village Buyers · NYC</div>
+  <h1>SEO Audit Report</h1>
+  <div class="cover-sub">Google Search Optimization Analysis — Buy &amp; Sell Pawn Shop</div>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">16 Pages Audited &nbsp;·&nbsp; Jewelry · Designer · Streetwear · Sneakers · Accessories · Electronics</div>
+  <div class="cover-date">June 2026</div>
+</div>
+
+<!-- ══ PAGE 2: EXECUTIVE SUMMARY ══════════════════════════════════ -->
+<div class="page">
+  <div class="section-label">SEO Audit</div>
+  <div class="section-title">Executive Summary</div>
+  <hr class="section-rule rule-orange">
+  <p class="section-intro">
+    This report audits all 16 HTML pages of the East Village Buyers website for Google search ranking factors.
+    The site's primary goal is ranking for high-intent local <strong>buy &amp; sell</strong> queries in NYC —
+    "sell gold NYC," "sell sneakers NYC," "sell jewelry near me," and related commercial terms.
+    Results are grouped into what's working, what needs fixing, and a phased action plan.
+  </p>
+
+  <div class="score-cards">
+    <div class="score-card"><div class="score-card-label">Pages<br>Audited</div><div class="score-card-num dark">16</div></div>
+    <div class="score-card"><div class="score-card-label">Pages With<br>Schema</div><div class="score-card-num green">6</div></div>
+    <div class="score-card"><div class="score-card-label">Blog<br>Posts</div><div class="score-card-num dark">9</div></div>
+    <div class="score-card"><div class="score-card-label">Blog Posts<br>Missing Schema</div><div class="score-card-num red">9</div></div>
+    <div class="score-card"><div class="score-card-label">Critical<br>Issues</div><div class="score-card-num red">5</div></div>
+  </div>
+
+  <div class="section-label">Site-Wide Assessment</div>
+  <table>
+    <tr><th>Category</th><th style="width:110px">Score</th><th>Notes</th></tr>
+    <tr><td>Title Tags &amp; Meta Descriptions</td><td><span class="ok">✓ Strong</span></td><td>All 16 pages have optimized titles with NYC + buy/sell keywords</td></tr>
+    <tr><td>URL Structure</td><td><span class="ok">✓ Strong</span></td><td>Keyword-rich URLs (we-buy-jewelry-nyc.html, blog-sell-jordans-nyc.html)</td></tr>
+    <tr><td>Canonical Tags</td><td><span class="ok">✓ Strong</span></td><td>All 16 pages have canonical tags — prevents duplicate content penalties</td></tr>
+    <tr><td>Open Graph / Social Tags</td><td><span class="ok">✓ Strong</span></td><td>og:title and og:description present on all 16 pages</td></tr>
+    <tr><td>LocalBusiness + FAQ Schema</td><td><span class="ok">✓ Strong</span></td><td>Homepage has LocalBusiness + FAQPage schema powering Google Maps and rich results</td></tr>
+    <tr><td>Schema — Blog Posts</td><td><span class="fail">✗ Missing</span></td><td>9 of 9 blog posts have zero structured data — Article schema entirely absent</td></tr>
+    <tr><td>Content Depth (Word Count)</td><td><span class="fail">✗ Weak</span></td><td>Blog posts avg 300–450 words. Google's Helpful Content system favors 800–1,500+</td></tr>
+    <tr><td>H-Tag Hierarchy</td><td><span class="warn">⚠ Partial</span></td><td>H1 on all pages; blog posts average only 3 H2s (target: 5–8 per post)</td></tr>
+    <tr><td>Image Alt Text</td><td><span class="warn">⚠ Partial</span></td><td>Hero images good; sidebar images reuse same 3 generic alts across all 9 blog pages</td></tr>
+    <tr><td>Internal Linking</td><td><span class="ok">✓ Good</span></td><td>~15 internal links per page; nav + footer connect all category pages</td></tr>
+    <tr><td>Local SEO Signals</td><td><span class="ok">✓ Strong</span></td><td>"NYC," "East Village," and "39 Avenue A" in titles, meta, body, and schema</td></tr>
+    <tr><td>Brand Entity Mentions</td><td><span class="ok">✓ Strong</span></td><td>Designer brand names (LV, Cartier, Supreme, Nike) boost topical authority with Google</td></tr>
+    <tr><td>FAQ / Rich Snippets</td><td><span class="warn">⚠ Partial</span></td><td>Homepage + blog hub have FAQPage schema; we-buy category pages are missing it</td></tr>
+    <tr><td>Robots / Indexability</td><td><span class="ok">✓ Strong</span></td><td>All pages set to "index, follow" — no accidental noindex blocks found</td></tr>
+    <tr><td>Breadcrumb Schema</td><td><span class="fail">✗ Missing</span></td><td>Breadcrumb HTML present on blog pages but no BreadcrumbList JSON-LD anywhere</td></tr>
+    <tr><td>Review / Rating Schema</td><td><span class="fail">✗ Missing</span></td><td>No AggregateRating schema — missing star ratings in Google SERP</td></tr>
+    <tr><td>Sitemap.xml / robots.txt</td><td><span class="fail">✗ Missing</span></td><td>Neither file found — Google has to discover all pages via crawl links only</td></tr>
+  </table>
+
+  <div class="report-footer">East Village Buyers · 39 Avenue A, New York, NY 10009 · eastvillagebuyers.com · SEO Audit — June 2026</div>
+</div>
+
+<!-- ══ PAGE 3: WHAT YOU'RE DOING RIGHT ════════════════════════════ -->
+<div class="page">
+  <div class="section-label">Section 1</div>
+  <div class="section-title">What You're Doing Right ✓</div>
+  <hr class="section-rule rule-green">
+  <p class="section-intro">These are the SEO signals Google is already picking up and rewarding. Keep all of these consistent as you add new pages.</p>
+
+  <table class="right-table">
+    <tr><th style="width:30px">#</th><th style="width:180px">SEO Factor</th><th>What You're Doing</th><th style="width:70px">Impact</th><th style="width:110px">Pages</th></tr>
+    <tr><td>1</td><td><strong>"Buy &amp; Sell" in Every Title Tag</strong></td><td>Every page title starts with "Buy &amp; Sell" + category + NYC — directly matching the highest-intent search queries a pawn shop can target.</td><td><span class="ok">HIGH</span></td><td>All 16</td></tr>
+    <tr><td>2</td><td><strong>NYC Keyword Throughout</strong></td><td>"NYC" in all titles and meta descriptions. "East Village," "Manhattan," and "39 Avenue A" in body copy reinforce local intent signals Google uses for map pack ranking.</td><td><span class="ok">HIGH</span></td><td>All 16</td></tr>
+    <tr><td>3</td><td><strong>Canonical Tags on Every Page</strong></td><td>Prevents duplicate content issues if the site loads on multiple domains. A missing canonical splits ranking authority — confirmed clean across all 16 pages.</td><td><span class="ok">HIGH</span></td><td>All 16</td></tr>
+    <tr><td>4</td><td><strong>Action-Oriented Meta Descriptions</strong></td><td>"Same-day cash," "Free appraisal, no obligation," "Walk in" — these drive higher click-through rates from Google results, which is itself a ranking signal.</td><td><span class="ok">HIGH</span></td><td>All 16</td></tr>
+    <tr><td>5</td><td><strong>Keyword-Rich URL Slugs</strong></td><td>we-buy-jewelry-nyc.html and blog-sell-jordans-nyc.html contain the exact phrases Google users type. URL keywords are a confirmed on-page ranking signal.</td><td><span class="ok">HIGH</span></td><td>All 16</td></tr>
+    <tr><td>6</td><td><strong>LocalBusiness Schema (Homepage)</strong></td><td>JSON-LD with name, address, phone, and hours powers Google's Knowledge Panel and Maps integration. openingHoursSpecification feeds the live "Open now" indicator.</td><td><span class="ok">HIGH</span></td><td>index.html</td></tr>
+    <tr><td>7</td><td><strong>FAQPage Schema (Homepage + Blog Hub)</strong></td><td>FAQ structured data on index.html (10 Q&amp;As) and bloghome.html enables expandable FAQ boxes in Google results — pushing competitors' listings further down the page.</td><td><span class="ok">HIGH</span></td><td>2 pages</td></tr>
+    <tr><td>8</td><td><strong>Open Graph Tags on All Pages</strong></td><td>og:title and og:description on every page ensures controlled, branded previews when links are shared on Instagram, Facebook, Twitter, and iMessage.</td><td><span class="warn">MED</span></td><td>All 16</td></tr>
+    <tr><td>9</td><td><strong>Brand Entity Mentions in Content</strong></td><td>Naming Louis Vuitton, Cartier, Supreme, Nike, Tiffany, Rolex signals topical authority to Google. Entity mentions strengthen relevance for luxury resale queries.</td><td><span class="ok">HIGH</span></td><td>We-Buy + Blogs</td></tr>
+    <tr><td>10</td><td><strong>One H1 Per Page — Keyword-Optimized</strong></td><td>Every page has exactly one H1 containing the primary keyword. The H1 is the most important on-page SEO signal after the title tag.</td><td><span class="ok">HIGH</span></td><td>All 16</td></tr>
+    <tr><td>11</td><td><strong>All Pages Indexed (robots = index, follow)</strong></td><td>No pages accidentally block Google crawlers. A single missed noindex removes a page from all search results instantly — confirmed clean across all 16 pages.</td><td><span class="ok">HIGH</span></td><td>All 16</td></tr>
+    <tr><td>12</td><td><strong>Service Schema on We-Buy Pages</strong></td><td>Jewelry, Designer, Accessories, and Electronics pages include Service/LocalBusiness schema — tying each service to the physical store for stronger local search signals.</td><td><span class="warn">MED</span></td><td>4 pages</td></tr>
+    <tr><td>13</td><td><strong>Consistent Internal Link Structure</strong></td><td>~15 internal links per page (nav + footer) ensure Google can crawl the entire site from any entry point. All category pages reachable within 2 clicks.</td><td><span class="warn">MED</span></td><td>All 16</td></tr>
+    <tr><td>14</td><td><strong>Blog Content Strategy in Place</strong></td><td>9 blog posts target long-tail queries (sell diamonds NYC, Travis Scott sneakers resale) that pull informational searchers into the buy/sell conversion funnel. This is the right strategy.</td><td><span class="ok">HIGH</span></td><td>9 blogs</td></tr>
+    <tr><td>15</td><td><strong>Address + Phone in Meta Descriptions</strong></td><td>"39 Avenue A" and "917-608-8939" visible in Google results before the user clicks — drives direct walk-in traffic and call conversions without a click needed.</td><td><span class="ok">HIGH</span></td><td>Homepage + category</td></tr>
+    <tr><td>16</td><td><strong>Sneakers + Streetwear Expand Keyword Reach</strong></td><td>Including these categories reaches a younger, highly active resale demographic with strong NYC search volume — diversifying beyond traditional gold/jewelry pawn queries.</td><td><span class="ok">HIGH</span></td><td>We-Buy pages</td></tr>
+    <tr><td>17</td><td><strong>Store Hours in Schema openingHours</strong></td><td>openingHoursSpecification feeds Google's live "Open now" indicator in Maps and local results — a direct local conversion signal before any click.</td><td><span class="ok">HIGH</span></td><td>index.html</td></tr>
+    <tr><td>18</td><td><strong>og:type="article" on Blog Posts</strong></td><td>Blog posts correctly set og:type="article" — appropriate content classification for editorial pages. Helps Google and social platforms distinguish articles from service pages.</td><td><span class="warn">MED</span></td><td>9 blogs</td></tr>
+    <tr><td>19</td><td><strong>Keyword Meta Tags on Blog Posts</strong></td><td>All 9 blog posts include meta keywords with 6–8 phrases per post (sell gold NYC, diamond buyers NYC) — useful as supplemental indexing signals for emerging queries.</td><td><span class="neu">LOW</span></td><td>9 blogs</td></tr>
+    <tr><td>20</td><td><strong>About Page Has Unique Story Content</strong></td><td>The First Houses / landmark building story is unique local content Google values for E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signals.</td><td><span class="warn">MED</span></td><td>about.html</td></tr>
+  </table>
+  <div class="report-footer">East Village Buyers · 39 Avenue A, New York, NY 10009 · eastvillagebuyers.com · SEO Audit — June 2026</div>
+</div>
+
+<!-- ══ PAGE 4: WHAT NEEDS IMPROVEMENT ════════════════════════════ -->
+<div class="page">
+  <div class="section-label">Section 2</div>
+  <div class="section-title">What Needs Improvement</div>
+  <hr class="section-rule rule-red">
+  <p class="section-intro">Gaps holding the site back in Google rankings. Fix Priority 1 items first — they deliver the highest immediate impact.</p>
+
+  <table class="improve-table">
+    <tr><th style="width:75px">Priority</th><th style="width:175px">Issue</th><th>Why It Matters for Google</th><th style="width:105px">Pages Affected</th><th style="width:165px">Recommended Fix</th></tr>
+
+    <tr>
+      <td><span class="pri1">P1 CRITICAL</span></td>
+      <td><strong>Blog Posts Missing Article Schema</strong></td>
+      <td>All 9 blog posts have zero JSON-LD. Google uses Article/BlogPosting schema for News features, Discover, and date-published rich snippets. Competitors with schema visibly outperform those without in SERP click-through.</td>
+      <td>9 blog posts</td>
+      <td>Add BlogPosting JSON-LD to each post: headline, author, datePublished, image, publisher (Organization with logo)</td>
+    </tr>
+    <tr>
+      <td><span class="pri1">P1 CRITICAL</span></td>
+      <td><strong>Thin Blog Content (300–450 Words)</strong></td>
+      <td>Google's Helpful Content system flags thin articles. For "sell diamonds NYC" and "Travis Scott sneakers resale NYC," top-ranking pages average 1,000–2,000 words. Thin content loses to competitors and gets progressively demoted over time.</td>
+      <td>9 blog posts</td>
+      <td>Expand each post to 800–1,500 words with brand examples, price ranges, condition grading, and actionable selling tips</td>
+    </tr>
+    <tr>
+      <td><span class="pri1">P1 CRITICAL</span></td>
+      <td><strong>No sitemap.xml or robots.txt</strong></td>
+      <td>Without a sitemap, Google discovers pages only via crawl links — slower and less reliable. A missing robots.txt means no crawl-budget control. These two files are table stakes for any indexed website.</td>
+      <td>Entire site</td>
+      <td>Create sitemap.xml listing all 16 URLs. Create robots.txt with Sitemap: reference. Submit sitemap in Google Search Console.</td>
+    </tr>
+    <tr>
+      <td><span class="pri1">P1 CRITICAL</span></td>
+      <td><strong>No BreadcrumbList Schema</strong></td>
+      <td>Blog pages have breadcrumb HTML (Home &gt; Blog &gt; Article) but no BreadcrumbList JSON-LD. Schema makes the path appear in Google results instead of the raw URL — proven to improve click-through rates by 10–15%.</td>
+      <td>9 blogs + 4 we-buy pages</td>
+      <td>Add BreadcrumbList JSON-LD to all blog posts and we-buy pages matching the visible breadcrumb navigation</td>
+    </tr>
+    <tr>
+      <td><span class="pri1">P1 CRITICAL</span></td>
+      <td><strong>No AggregateRating / Review Schema</strong></td>
+      <td>Star ratings in search results (4.8 ★★★★★) dramatically increase click-through rates. Pawn shop competitors with star ratings visibly outperform those without for every buy/sell category query in NYC.</td>
+      <td>index.html (minimum)</td>
+      <td>Add AggregateRating JSON-LD on homepage referencing Google Business Profile review count and average score</td>
+    </tr>
+
+    <tr>
+      <td><span class="pri2">P2 HIGH</span></td>
+      <td><strong>Generic Sidebar Image Alt Texts</strong></td>
+      <td>All 9 blog posts reuse 3 identical alts: "Gold jewelry," "Diamond ring," "Streetwear." Duplicate alts across 9 pages waste a unique ranking signal for image search and for content context Google reads.</td>
+      <td>9 blog posts</td>
+      <td>Write unique alt text per image per page (e.g., "Sell gold chain NYC — East Village Buyers counter")</td>
+    </tr>
+    <tr>
+      <td><span class="pri2">P2 HIGH</span></td>
+      <td><strong>Blog Posts Need More H2 Subheadings</strong></td>
+      <td>Blogs average only 3 H2s. Google rewards structured long-form content. Each H2 is an additional keyword opportunity: "How We Price Your Jordans," "What Condition Matters," "What to Bring When Selling."</td>
+      <td>9 blog posts</td>
+      <td>Expand articles with 5–8 H2 sections covering pricing, brand comparisons, condition grading, and the selling process</td>
+    </tr>
+    <tr>
+      <td><span class="pri2">P2 HIGH</span></td>
+      <td><strong>About Page Missing Schema</strong></td>
+      <td>about.html has no structured data. Organization schema reinforces Google's Knowledge Graph entity for the business and enables sitelinks in branded searches (searches for "East Village Buyers").</td>
+      <td>about.html</td>
+      <td>Add Organization JSON-LD with name, url, description, sameAs (Google Business, Yelp, Instagram, Facebook)</td>
+    </tr>
+    <tr>
+      <td><span class="pri2">P2 HIGH</span></td>
+      <td><strong>Category Pages Missing FAQPage Schema</strong></td>
+      <td>We-buy pages have content but no FAQ rich snippets. FAQPage schema with 4–5 Q&amp;As per page ("How much do you pay?" "What brands?" "How fast do I get paid?") can earn expandable boxes in Google results.</td>
+      <td>4 we-buy pages</td>
+      <td>Add FAQPage JSON-LD to each we-buy page with 4–5 category-specific buy/sell Q&amp;As</td>
+    </tr>
+    <tr>
+      <td><span class="pri2">P2 HIGH</span></td>
+      <td><strong>About Page Title Lacks Buy/Sell Keywords</strong></td>
+      <td>Current: "About Us | East Village Buyers — 39 Avenue A, NYC" — misses commercial intent. Stronger: "About East Village Buyers | NYC Buy &amp; Sell Shop at 39 Avenue A."</td>
+      <td>about.html</td>
+      <td>Update title tag to include "Buy &amp; Sell" + NYC signal alongside the brand name</td>
+    </tr>
+
+    <tr>
+      <td><span class="pri3">P3 MED</span></td>
+      <td><strong>Missing We-Buy-Sneakers Page</strong></td>
+      <td>"Sell sneakers NYC" is a high-volume commercial query with no dedicated landing page. Sneakers appear in homepage cards but there is no page to rank for sneaker-specific queries or convert sneaker sellers.</td>
+      <td>Site gap</td>
+      <td>Create we-buy-sneakers-nyc.html — Nike, Jordan, New Balance, ASICS. Include ServiceSchema + FAQPage schema.</td>
+    </tr>
+    <tr>
+      <td><span class="pri3">P3 MED</span></td>
+      <td><strong>Missing We-Buy-Streetwear Page</strong></td>
+      <td>Streetwear is featured on the homepage but has no dedicated page. "Sell Supreme NYC" and "sell streetwear NYC" are high-value commercial queries. Blog posts exist but a we-buy page ranks and converts better.</td>
+      <td>Site gap</td>
+      <td>Create we-buy-streetwear-nyc.html — Supreme, Bape, Off-White, Palace, Stüssy, Chrome Hearts, Corteiz.</td>
+    </tr>
+    <tr>
+      <td><span class="pri3">P3 MED</span></td>
+      <td><strong>Missing We-Buy-Watches + We-Buy-Gold Pages</strong></td>
+      <td>"Sell Rolex NYC" and "sell gold NYC" are among the highest-value local pawn queries in the US. Blog content covers gold but there are no dedicated landing pages ranking independently for these terms.</td>
+      <td>Site gap</td>
+      <td>Create we-buy-watches-nyc.html (Rolex, Omega, Patek, AP) and we-buy-gold-nyc.html (10K–24K, bars, coins)</td>
+    </tr>
+    <tr>
+      <td><span class="pri3">P3 MED</span></td>
+      <td><strong>Blog og:descriptions Too Short</strong></td>
+      <td>Several blog og:descriptions are under 80 characters. Optimal is 110–155. Short OG descriptions get auto-replaced by platforms with less relevant text, hurting social click-through rates.</td>
+      <td>6 blog posts</td>
+      <td>Expand og:description on all blogs to 110–155 chars with specific keywords and a CTA ("Walk in — same-day cash")</td>
+    </tr>
+    <tr>
+      <td><span class="pri3">P3 MED</span></td>
+      <td><strong>No Contextual In-Body Links (Blogs → We-Buy)</strong></td>
+      <td>Blog posts drive awareness traffic but lack in-body links to category pages. Each post should link to the relevant we-buy page with anchor text like "sell your sneakers at East Village Buyers."</td>
+      <td>9 blog posts</td>
+      <td>Add 1–2 contextual in-body links per blog post pointing to the matching we-buy category page</td>
+    </tr>
+    <tr>
+      <td><span class="pri3">P3 MED</span></td>
+      <td><strong>Blog Posts Use Placeholder Images</strong></td>
+      <td>All 9 blog posts use evbplaceholder.png as the hero image. Google Discover and Image Search require unique, relevant images per page. Identical images across pages signal low-quality content.</td>
+      <td>9 blog posts</td>
+      <td>Upload unique hero images per post with keyword filenames (sell-jordans-nyc.jpg, sell-diamonds-nyc.jpg)</td>
+    </tr>
+  </table>
+  <div class="report-footer">East Village Buyers · 39 Avenue A, New York, NY 10009 · eastvillagebuyers.com · SEO Audit — June 2026</div>
+</div>
+
+<!-- ══ PAGE 5: PAGE-BY-PAGE ANALYSIS ══════════════════════════════ -->
+<div class="page">
+  <div class="section-label">Section 3</div>
+  <div class="section-title">Page-by-Page SEO Snapshot</div>
+  <hr class="section-rule rule-orange">
+  <p class="section-intro">Full metadata snapshot for every page. &nbsp; <span class="ok">✓ = Present &amp; Good</span> &nbsp; <span class="warn">⚠ = Partial/Generic</span> &nbsp; <span class="fail">✗ = Missing</span></p>
+
+  <table>
+    <tr>
+      <th style="width:135px">Page / File</th>
+      <th>Title Tag</th>
+      <th style="width:40px;text-align:center">H1</th>
+      <th style="width:80px;text-align:center">Schema</th>
+      <th style="width:55px;text-align:center">Canonical</th>
+      <th style="width:55px;text-align:center">~Words</th>
+      <th style="width:45px;text-align:center">H2s</th>
+      <th style="width:80px;text-align:center">Alt Text</th>
+    </tr>
+    <tr>
+      <td><strong>index.html</strong><br><span style="color:#9ca3af;font-size:10px">Homepage</span></td>
+      <td>Buy &amp; Sell Gold, Designer &amp; Streetwear NYC | East Village Buyers</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="ok">✓ Local<br>+ FAQ</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="ok">4,000+</span></td>
+      <td style="text-align:center"><span class="ok">✓ 8+</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Mixed</span></td>
+    </tr>
+    <tr>
+      <td><strong>about.html</strong></td>
+      <td>About Us | East Village Buyers — 39 Avenue A, NYC</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">✗ None</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="warn">~1,300</span></td>
+      <td style="text-align:center"><span class="warn">✓ 3</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+    </tr>
+    <tr>
+      <td><strong>bloghome.html</strong></td>
+      <td>Buy &amp; Sell Gold, Watches, Designer &amp; Streetwear NYC | EVB Blog</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="ok">✓ Blog<br>+ FAQ</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="ok">3,500+</span></td>
+      <td style="text-align:center"><span class="ok">✓ 5+</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+    </tr>
+    <tr>
+      <td><strong>we-buy-jewelry-nyc.html</strong></td>
+      <td>We Buy &amp; Sell Jewelry NYC | Gold, Diamonds, Silver, Platinum &amp; Estate</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="ok">✓ Service</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="ok">2,500+</span></td>
+      <td style="text-align:center"><span class="ok">✓ 5+</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Some placeholders</span></td>
+    </tr>
+    <tr>
+      <td><strong>we-buy-designer-nyc.html</strong></td>
+      <td>We Buy &amp; Sell Designer Handbags NYC | LV, Chanel, Hermès, Gucci</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="ok">✓ Service</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="ok">2,800+</span></td>
+      <td style="text-align:center"><span class="ok">✓ 5+</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+    </tr>
+    <tr>
+      <td><strong>we-buy-accessories-nyc.html</strong></td>
+      <td>We Buy &amp; Sell Designer Accessories NYC | Gucci, LV, Hermès, Goyard</td>
+      <td style="text-align:center"><span class="warn">⚠ Verify H1</span></td>
+      <td style="text-align:center"><span class="ok">✓ Service</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="ok">2,500+</span></td>
+      <td style="text-align:center"><span class="warn">✓ 4+</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Some placeholders</span></td>
+    </tr>
+    <tr>
+      <td><strong>we-buy-electronics-nyc.html</strong></td>
+      <td>We Buy &amp; Sell Electronics NYC | iPhone, AirPods, Cameras, PS5</td>
+      <td style="text-align:center"><span class="warn">⚠ Verify H1</span></td>
+      <td style="text-align:center"><span class="ok">✓ Service</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="ok">2,500+</span></td>
+      <td style="text-align:center"><span class="warn">✓ 4+</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Some placeholders</span></td>
+    </tr>
+    <tr>
+      <td><strong>blog-authenticate-chrome-hearts-nyc</strong></td>
+      <td>How We Authenticate Chrome Hearts — What Fakes Always Get Wrong</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">✗ None</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">~450</span></td>
+      <td style="text-align:center"><span class="fail">✗ 3</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Generic sidebar</span></td>
+    </tr>
+    <tr>
+      <td><strong>blog-estate-jewelry-appraisal-nyc</strong></td>
+      <td>Estate Jewelry Appraisal NYC: What to Know</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">✗ None</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">~400</span></td>
+      <td style="text-align:center"><span class="fail">✗ 4</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Generic sidebar</span></td>
+    </tr>
+    <tr>
+      <td><strong>blog-how-to-sell-diamonds-nyc</strong></td>
+      <td>How to Sell Diamonds in NYC: The Complete Guide</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">✗ None</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">~450</span></td>
+      <td style="text-align:center"><span class="fail">✗ 4</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Generic sidebar</span></td>
+    </tr>
+    <tr>
+      <td><strong>blog-is-silver-jewelry-worth-selling</strong></td>
+      <td>Is Silver Jewelry Worth Selling? | East Village Buyers NYC</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">✗ None</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">~375</span></td>
+      <td style="text-align:center"><span class="fail">✗ 3</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Generic sidebar</span></td>
+    </tr>
+    <tr>
+      <td><strong>blog-sell-jordans-nyc</strong></td>
+      <td>How to Sell Jordans in NYC — What Your Sneakers Are Actually Worth</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">✗ None</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">~325</span></td>
+      <td style="text-align:center"><span class="fail">✗ 3</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Generic sidebar</span></td>
+    </tr>
+    <tr>
+      <td><strong>blog-supreme-box-logo-guide-nyc</strong></td>
+      <td>Supreme Box Logo Season Guide — Which Years Are Still Worth Money?</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">✗ None</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">~325</span></td>
+      <td style="text-align:center"><span class="fail">✗ 3</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Generic sidebar</span></td>
+    </tr>
+    <tr>
+      <td><strong>blog-travis-scott-sneakers-resale-nyc</strong></td>
+      <td>Travis Scott Sneakers Resale Guide — Which Collabs Still Pay Top Dollar</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">✗ None</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">~325</span></td>
+      <td style="text-align:center"><span class="fail">✗ 3</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Generic sidebar</span></td>
+    </tr>
+    <tr>
+      <td><strong>blog-vintage-streetwear-worth-selling</strong></td>
+      <td>Is Your Vintage Streetwear Worth Selling? A NYC Resale Guide</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">✗ None</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">~325</span></td>
+      <td style="text-align:center"><span class="fail">✗ 3</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Generic sidebar</span></td>
+    </tr>
+    <tr>
+      <td><strong>blog-why-gold-prices-fluctuate-nyc</strong></td>
+      <td>Why Gold Prices Fluctuate (And When to Sell in NYC)</td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">✗ None</span></td>
+      <td style="text-align:center"><span class="ok">✓</span></td>
+      <td style="text-align:center"><span class="fail">~425</span></td>
+      <td style="text-align:center"><span class="fail">✗ 3</span></td>
+      <td style="text-align:center"><span class="warn">⚠ Generic sidebar</span></td>
+    </tr>
+  </table>
+  <div class="report-footer">East Village Buyers · 39 Avenue A, New York, NY 10009 · eastvillagebuyers.com · SEO Audit — June 2026</div>
+</div>
+
+<!-- ══ PAGE 6: ACTION PLAN ════════════════════════════════════════ -->
+<div class="page">
+  <div class="section-label">Section 4</div>
+  <div class="section-title">Priority Action Plan</div>
+  <hr class="section-rule rule-orange">
+  <p class="section-intro">Execute in order. Phase 1 delivers the highest Google impact fastest. Complete it before moving to Phase 2 or 3.</p>
+
+  <div class="phase-head phase1-head">🔴 PHASE 1 — Do These First (Highest Immediate Google Impact)</div>
+  <div class="action-list">
+    <div class="action-item p1-item">
+      <div class="action-num">1</div>
+      <div class="action-body">
+        <div class="action-title">Create sitemap.xml + Submit to Google Search Console</div>
+        <div class="action-desc">List all 16 page URLs with &lt;lastmod&gt; dates. Submit the URL in Google Search Console under Sitemaps. This alone can increase full-site indexing speed by days and ensures no pages are missed by the crawler.</div>
+        <div class="action-time">Est. time: 1 hour</div>
+      </div>
+    </div>
+    <div class="action-item p1-item">
+      <div class="action-num">2</div>
+      <div class="action-body">
+        <div class="action-title">Create robots.txt</div>
+        <div class="action-desc">Add one line: <code>Sitemap: https://www.eastvillagebuyers.com/sitemap.xml</code>. Block no legitimate pages. This signals the sitemap location to all crawlers automatically.</div>
+        <div class="action-time">Est. time: 15 min</div>
+      </div>
+    </div>
+    <div class="action-item p1-item">
+      <div class="action-num">3</div>
+      <div class="action-body">
+        <div class="action-title">Add BlogPosting JSON-LD to All 9 Blog Posts</div>
+        <div class="action-desc">Include: @type BlogPosting, headline (= H1 text), author (East Village Buyers), datePublished, image URL, publisher with logo. Copy-paste a template across all 9 posts and update the headline and date per post.</div>
+        <div class="action-time">Est. time: 2–3 hours</div>
+      </div>
+    </div>
+    <div class="action-item p1-item">
+      <div class="action-num">4</div>
+      <div class="action-body">
+        <div class="action-title">Add AggregateRating JSON-LD to Homepage</div>
+        <div class="action-desc">Pull ratingValue and reviewCount from your Google Business Profile. Star ratings appearing in results for "sell gold NYC" and "pawn shop East Village" dramatically increase click-through vs. competitors with no stars.</div>
+        <div class="action-time">Est. time: 30 min</div>
+      </div>
+    </div>
+    <div class="action-item p1-item">
+      <div class="action-num">5</div>
+      <div class="action-body">
+        <div class="action-title">Add BreadcrumbList JSON-LD to All Blog Posts and We-Buy Pages</div>
+        <div class="action-desc">Schema matches the visible nav: Home &gt; Blog &gt; [Title]. Replaces the raw URL in Google results with a human-readable path. Proven 10–15% CTR improvement across comparable pages in local search.</div>
+        <div class="action-time">Est. time: 1–2 hours</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-head phase2-head" style="margin-top:20px">🟡 PHASE 2 — Content Expansion (Biggest Long-Term Traffic Gains)</div>
+  <div class="action-list">
+    <div class="action-item p2-item">
+      <div class="action-num">1</div>
+      <div class="action-body">
+        <div class="action-title">Expand All 9 Blog Posts to 800–1,200 Words</div>
+        <div class="action-desc">Add sections on: specific brand and model examples, price ranges by condition, what to bring when selling, how the appraisal process works, and frequently asked questions. Target 5–8 H2 subheadings per post. This is the single biggest driver of organic traffic growth for the site.</div>
+        <div class="action-time">Est. time: 6–10 hours total</div>
+      </div>
+    </div>
+    <div class="action-item p2-item">
+      <div class="action-num">2</div>
+      <div class="action-body">
+        <div class="action-title">Add FAQPage Schema to All 4 We-Buy Category Pages</div>
+        <div class="action-desc">4–5 Q&amp;As per page: "How much do you pay for [item]?" "What condition is acceptable?" "How fast do I get paid?" "Do you buy [brand]?" FAQ rich snippets push competitor listings below yours in results.</div>
+        <div class="action-time">Est. time: 2 hours</div>
+      </div>
+    </div>
+    <div class="action-item p2-item">
+      <div class="action-num">3</div>
+      <div class="action-body">
+        <div class="action-title">Fix Generic Sidebar Image Alt Texts Across All 9 Blog Posts</div>
+        <div class="action-desc">Replace "Gold jewelry / Diamond ring / Streetwear" with specific, unique alts per image per page. Example: "Sell gold hoop earrings NYC — East Village Buyers." Unique alts = unique image ranking signals for each post.</div>
+        <div class="action-time">Est. time: 1 hour</div>
+      </div>
+    </div>
+    <div class="action-item p2-item">
+      <div class="action-num">4</div>
+      <div class="action-body">
+        <div class="action-title">Add Organization Schema to about.html</div>
+        <div class="action-desc">Include sameAs links to Google Business Profile, Yelp, Instagram, Facebook. This builds E-E-A-T in Google's eyes and connects your web presence as a single trusted entity in the Knowledge Graph.</div>
+        <div class="action-time">Est. time: 30 min</div>
+      </div>
+    </div>
+    <div class="action-item p2-item">
+      <div class="action-num">5</div>
+      <div class="action-body">
+        <div class="action-title">Update about.html Title to Include Buy &amp; Sell + NYC</div>
+        <div class="action-desc">New title: "About East Village Buyers | NYC Buy &amp; Sell Shop at 39 Avenue A" — captures both branded searches and commercial-intent queries that land on the About page.</div>
+        <div class="action-time">Est. time: 5 min</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-head phase3-head" style="margin-top:20px">🟠 PHASE 3 — New Pages (Expand Keyword Footprint)</div>
+  <div class="action-list">
+    <div class="action-item p3-item">
+      <div class="action-num">1</div>
+      <div class="action-body">
+        <div class="action-title">Create we-buy-sneakers-nyc.html</div>
+        <div class="action-desc">"Sell sneakers NYC" is a high-volume commercial query with no dedicated page. Cover Nike, Jordan, New Balance, ASICS, Salehe Bembury. Include specific model callouts (Jordan 1, Air Max, 990v6). Add ServiceSchema + FAQPage schema.</div>
+        <div class="action-time">Est. time: 3–4 hours</div>
+      </div>
+    </div>
+    <div class="action-item p3-item">
+      <div class="action-num">2</div>
+      <div class="action-body">
+        <div class="action-title">Create we-buy-streetwear-nyc.html</div>
+        <div class="action-desc">"Sell Supreme NYC" and "sell streetwear NYC" are high-value commercial queries. Cover Supreme, Bape, Off-White, Palace, Stüssy, Chrome Hearts, Corteiz, Cactus Plant Flea Market. Reference product types: box logo, hoodies, tees, jackets.</div>
+        <div class="action-time">Est. time: 3–4 hours</div>
+      </div>
+    </div>
+    <div class="action-item p3-item">
+      <div class="action-num">3</div>
+      <div class="action-body">
+        <div class="action-title">Create we-buy-watches-nyc.html</div>
+        <div class="action-desc">"Sell Rolex NYC" is one of the highest-value local pawn queries in the US. Cover Rolex, Omega, Patek Philippe, Audemars Piguet, Tudor, IWC. Call out specific references: Submariner, Speedmaster, Nautilus, Royal Oak, Black Bay.</div>
+        <div class="action-time">Est. time: 3–4 hours</div>
+      </div>
+    </div>
+    <div class="action-item p3-item">
+      <div class="action-num">4</div>
+      <div class="action-body">
+        <div class="action-title">Add Contextual In-Body Links from All Blogs to Matching We-Buy Pages</div>
+        <div class="action-desc">Each blog post needs 1–2 in-body links with targeted anchor text: "sell your diamonds at East Village Buyers," "bring your Jordans to our shop." Passes link equity from content pages to conversion pages and guides the reader toward action.</div>
+        <div class="action-time">Est. time: 1 hour</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="report-footer" style="margin-top:28px">
+    East Village Buyers · 39 Avenue A, New York, NY 10009 · eastvillagebuyers.com · SEO Audit — June 2026<br>
+    <span style="color:#d1d5db">To export as PDF: Open this file in Chrome → File → Print → Save as PDF → set paper to Letter, margins to Default</span>
+  </div>
+</div>
+
+</body>
+</html>

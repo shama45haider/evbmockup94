@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Streetwear FAQ — East Village Buyers NYC</title>
+  <meta name="description" content="Real answers about buying and selling Supreme, BAPE, Palace, vintage streetwear, and hype clothing in NYC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --accent: #f97316; --bg: #f8f5f0; --dark: #1a1814; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--dark); min-height: 100vh; }
+    .jfaq-header { background: #fff; border-bottom: 1px solid #e8e4de; padding: 0 1.5rem; height: 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .jfaq-logo { height: 32px; width: auto; }
+    .jfaq-back { font-size: 12px; font-weight: 700; color: var(--dark); text-decoration: none; display: flex; align-items: center; gap: 6px; letter-spacing: 0.04em; text-transform: uppercase; transition: color .15s; }
+    .jfaq-back:hover { color: var(--accent); }
+    .jfaq-back::before { content: '←'; font-size: 14px; }
+    .faq2-section { background: var(--bg); padding: 3.5rem 0 4rem; width: 100%; }
+    .faq2-header { max-width: 920px; margin: 0 auto 2rem; padding: 0 1.5rem; }
+    .cp-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .faq2-header h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; color: var(--dark); letter-spacing: -0.01em; margin: 0 0 8px; line-height: 1.2; }
+    .faq2-lede { font-size: 14px; color: #6b6560; line-height: 1.6; max-width: 500px; margin: 0; }
+    .faq2-shell { max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
+    .faq2-item { background: #fff; border: 1.5px solid #e8e4de; border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+    .faq2-q { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; background: none; border: none; padding: 1.1rem 1.25rem; cursor: pointer; text-align: left; }
+    .faq2-q:hover { background: #fdfaf7; }
+    .faq2-q-text { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; color: var(--dark); line-height: 1.45; flex: 1; transition: color .15s; }
+    .faq2-item.is-open .faq2-q-text { color: #c2410c; }
+    .faq2-item.is-open .faq2-q { background: #fff8f2; }
+    .faq2-icon { flex-shrink: 0; width: 26px; height: 26px; border: 1.5px solid #ddd9d3; border-radius: 50%; background: var(--bg); position: relative; transition: background .2s, border-color .2s; }
+    .faq2-icon::before, .faq2-icon::after { content: ''; position: absolute; top: 50%; left: 50%; background: #9a9490; border-radius: 2px; transition: transform .25s cubic-bezier(.4,0,.2,1), opacity .2s, background .2s; }
+    .faq2-icon::before { width: 10px; height: 1.5px; transform: translate(-50%,-50%); }
+    .faq2-icon::after { width: 1.5px; height: 10px; transform: translate(-50%,-50%); }
+    .faq2-item.is-open .faq2-icon { border-color: var(--accent); background: #fff4ec; }
+    .faq2-item.is-open .faq2-icon::before, .faq2-item.is-open .faq2-icon::after { background: var(--accent); }
+    .faq2-item.is-open .faq2-icon::after { transform: translate(-50%,-50%) rotate(90deg); opacity: 0; }
+    .faq2-a { overflow: hidden; height: 0; transition: height .3s cubic-bezier(.4,0,.2,1); }
+    .faq2-a-inner { padding: 0.9rem 1.25rem 1.15rem; font-size: 14px; line-height: 1.75; color: #5a5550; opacity: 0; transform: translateY(4px); transition: opacity .2s .05s ease, transform .2s .05s ease; border-top: 1px solid #f0ece6; }
+    .faq2-item.is-open .faq2-a-inner { opacity: 1; transform: none; }
+    .faq2-a-inner p { margin: 0 0 .5rem; }
+    .faq2-a-inner p:last-child { margin: 0; }
+    .faq2-a-inner a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .faq2-a-inner a:hover { text-decoration: underline; }
+    .faq2-group-label { font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 1.5px solid #e8e4de; }
+    .faq2-group-label:first-child { margin-top: 0; }
+    .jfaq-cta { background: var(--dark); padding: 3rem 1.5rem; text-align: center; }
+    .jfaq-cta h2 { font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+    .jfaq-cta p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; line-height: 1.6; }
+    .jfaq-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .jfaq-cta-solid { background: var(--accent); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; padding: 13px 24px; border-radius: 8px; text-decoration: none; transition: background .15s; }
+    .jfaq-cta-solid:hover { background: #ea6c0a; }
+    .jfaq-cta-ghost { background: transparent; color: #fff; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; padding: 13px 24px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.3); text-decoration: none; transition: border-color .15s, color .15s; }
+    .jfaq-cta-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .evb-footer { background: #0c0b0a; color: rgba(255,255,255,0.55); padding: 2.5rem 1.5rem 2rem; border-top: 3px solid var(--accent); }
+    .evb-footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .evb-footer-brand p { font-size: 0.8rem; line-height: 1.7; margin: 0.5rem 0 0; }
+    .evb-footer-logo { height: 36px; width: auto; opacity: 0.7; margin-bottom: 0.5rem; }
+    .evb-footer-links p { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem; }
+    .evb-footer-links a { display: block; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; transition: color .15s; }
+    .evb-footer-links a:hover { color: var(--accent); }
+    .evb-footer-bottom { max-width: 1100px; margin: 1.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; }
+    .evb-footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; }
+    .evb-footer-bottom a:hover { color: var(--accent); }
+    @media (max-width: 600px) {
+      .jfaq-header { padding: 0 1rem; }
+      .faq2-section { padding: 2.5rem 0 3rem; }
+      .faq2-header { padding: 0 1rem; margin-bottom: 1.5rem; }
+      .faq2-shell { padding: 0 1rem; }
+      .faq2-q { padding: 1rem; }
+      .faq2-q-text { font-size: 14px; }
+      .faq2-a-inner { padding: 0.85rem 1rem 1rem; font-size: 13.5px; }
+      .evb-footer-inner { grid-template-columns: 1fr; }
+      .evb-footer-links { align-items: flex-start; }
+      .evb-footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="jfaq-header">
+    <a href="index.html"><img src="evbbanner.png" alt="East Village Buyers" class="jfaq-logo"></a>
+    <a href="index.html" class="jfaq-back">Back to Home</a>
+  </header>
+
+  <section class="faq2-section" id="faq">
+    <div class="faq2-header">
+      <p class="cp-eyebrow">Questions &amp; Answers</p>
+      <h2>Streetwear FAQ</h2>
+      <p class="faq2-lede">Real answers about selling Supreme, BAPE, Palace, Off-White, vintage streetwear, and hype clothing in NYC.</p>
+    </div>
+
+    <div class="faq2-shell">
+      <div class="faq2-group-label">Streetwear Brands</div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">Which streetwear brands do you buy?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>Supreme, BAPE, Palace, Off-White, Acne Studios, Ami Paris, Balenciaga, Balmain, Carhartt WIP, Chrome Hearts, Dior, Fendi, Givenchy, Gucci, Hermès, Lanvin, Louis Vuitton, Margiela, Marni, MCM, Moncler, Prada, Rick Owens, Saint Laurent, Thom Browne, Tom Ford, Valentino, Versace, and other high-demand hype and luxury streetwear.</p></div>
+        </div>
+      </div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">Do you buy vintage band tees and 90s/Y2K pieces?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>Yes — vintage band tees, workwear, 90s grunge, Y2K fashion, and curated vintage pieces in clean condition. Graphic quality, brand recognition, and era authenticity matter.</p></div>
+        </div>
+      </div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">Do you buy counterfeit or fake streetwear?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>No. We only buy authentic streetwear and vintage pieces. Counterfeits and fakes cannot be purchased — we authenticate everything before offering.</p></div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Condition &amp; Authentication</div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">What condition does streetwear need to be in?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>Good to excellent, wearable condition. Normal wear, minor fading, small stains that don't show heavily — fine. Major holes, heavy staining, odors, or color damage will reduce or disqualify the offer.</p></div>
+        </div>
+      </div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">How do you authenticate Supreme and BAPE?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>We inspect tags, stitching, materials, graphics (print quality, placement), hardware, construction, and brand-specific details. We check season, year, and collaboration authenticity.</p></div>
+        </div>
+      </div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">Can I send photos before coming in?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>Yes. Text clear photos of the front, back, tags, and any graphics to <a href="sms:9176088939">917-608-8939</a>. For rare pieces or high-value items, this helps us pre-evaluate before you visit.</p></div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Factors That Affect Price</div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">What affects streetwear resale value?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>Season and year of release, collaboration exclusivity, rarity, hype level, current resale demand, condition, size, whether tags are present, and how collectible the piece is in the current market.</p></div>
+        </div>
+      </div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">Do tags matter on streetwear?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>Yes, especially for recent Supreme and BAPE releases. Original tags or hangtags can improve the offer. We still buy pieces without tags after inspection of authenticity.</p></div>
+        </div>
+      </div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">Does size affect the offer?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>Yes. Smaller sizes and larger sizes (S, XL, XXL) typically have narrower buyer bases. Medium and Large are most liquid. Popular sizes get stronger offers.</p></div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Selling Process</div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">Do I need an appointment?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>Walk-ins welcome during store hours. For large collections or rare items, texting photos to <a href="sms:9176088939">917-608-8939</a> first helps us set aside time.</p></div>
+        </div>
+      </div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">When and how will I get paid?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>Same-day cash on the spot after you accept the offer. For large collections, check payment is available — just let us know at the counter.</p></div>
+        </div>
+      </div>
+      <div class="faq2-item">
+        <button class="faq2-q" aria-expanded="false">
+          <span class="faq2-q-text">What if I change my mind after the offer?</span>
+          <span class="faq2-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq2-a">
+          <div class="faq2-a-inner"><p>No problem — the appraisal is free and no-obligation. Take your pieces and go. Come back another day and we'll make a fresh offer.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="jfaq-cta">
+    <h2>Ready to Sell? Come See Us.</h2>
+    <p>39 Avenue A, East Village NYC &nbsp;·&nbsp; Walk-ins welcome &nbsp;·&nbsp; Sun–Thu 12:30–6:30 &nbsp;·&nbsp; Fri 12:30–6</p>
+    <div class="jfaq-cta-btns">
+      <a href="sms:9176088939" class="jfaq-cta-solid">Text Photos for a Quote</a>
+      <a href="tel:9176088939" class="jfaq-cta-ghost">Call 917-608-8939</a>
+    </div>
+  </div>
+
+  <footer class="evb-footer">
+    <div class="evb-footer-inner">
+      <div class="evb-footer-brand">
+        <img src="evbbanner.png" alt="East Village Buyers" class="evb-footer-logo">
+        <p>39 Avenue A · New York, NY 10009<br>DCA License #2070477 · Vintage USA Inc</p>
+      </div>
+      <div class="evb-footer-links">
+        <p>We Buy &amp; Sell</p>
+        <a href="we-buy-jewelry-nyc.html">Jewelry</a>
+        <a href="we-buy-designer-nyc.html">Designer</a>
+        <a href="we-buy-accessories-nyc.html">Accessories</a>
+        <a href="we-buy-electronics-nyc.html">Electronics</a>
+      </div>
+    </div>
+    <div class="evb-footer-bottom">
+      <p>&copy; 2026 East Village Buyers</p>
+      <p><a href="index.html">Return to Homepage</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq2-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq2-item');
+        const panel = item.querySelector('.faq2-a');
+        const isOpen = item.classList.contains('is-open');
+        const parentPanel = item.closest('.faq2-shell') || document.querySelector('.faq2-shell');
+        (parentPanel ? parentPanel : document).querySelectorAll('.faq2-item.is-open').forEach(open => {
+          const p = open.querySelector('.faq2-a');
+          p.style.height = p.scrollHeight + 'px';
+          requestAnimationFrame(() => { p.style.height = '0'; });
+          open.classList.remove('is-open');
+          open.querySelector('.faq2-q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+          panel.style.height = '0';
+          requestAnimationFrame(() => {
+            panel.style.height = panel.scrollHeight + 'px';
+            panel.addEventListener('transitionend', () => { panel.style.height = 'auto'; }, { once: true });
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

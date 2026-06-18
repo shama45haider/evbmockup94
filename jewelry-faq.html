@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jewelry FAQ — East Village Buyers NYC</title>
+  <meta name="description" content="Real answers about selling gold, diamonds, silver, estate jewelry and designer pieces at East Village Buyers in NYC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --accent: #f97316; --bg: #f8f5f0; --dark: #1a1814; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .jfaq-header {
+      background: #fff;
+      border-bottom: 1px solid #e8e4de;
+      padding: 0 1.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .jfaq-logo {
+      height: 32px;
+      width: auto;
+    }
+    .jfaq-back {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color .15s;
+    }
+    .jfaq-back:hover { color: var(--accent); }
+    .jfaq-back::before { content: '←'; font-size: 14px; }
+
+    /* ── FAQ2 section ── */
+    .faq2-section {
+      background: var(--bg);
+      padding: 3.5rem 0 4rem;
+      width: 100%;
+    }
+    .faq2-header {
+      max-width: 920px;
+      margin: 0 auto 2rem;
+      padding: 0 1.5rem;
+    }
+    .cp-eyebrow {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .faq2-header h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+      margin: 0 0 8px;
+      line-height: 1.2;
+    }
+    .faq2-lede {
+      font-size: 14px;
+      color: #6b6560;
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0;
+    }
+    .faq2-shell {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .faq2-item {
+      background: #fff;
+      border: 1.5px solid #e8e4de;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .faq2-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.1rem 1.25rem;
+      cursor: pointer;
+      text-align: left;
+    }
+    .faq2-q:hover { background: #fdfaf7; }
+    .faq2-q-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.45;
+      flex: 1;
+      transition: color .15s;
+    }
+    .faq2-item.is-open .faq2-q-text { color: #c2410c; }
+    .faq2-item.is-open .faq2-q { background: #fff8f2; }
+
+    .faq2-icon {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border: 1.5px solid #ddd9d3;
+      border-radius: 50%;
+      background: var(--bg);
+      position: relative;
+      transition: background .2s, border-color .2s;
+    }
+    .faq2-icon::before, .faq2-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      background: #9a9490;
+      border-radius: 2px;
+      transition: transform .25s cubic-bezier(.4,0,.2,1), opacity .2s, background .2s;
+    }
+    .faq2-icon::before { width: 10px; height: 1.5px; transform: translate(-50%,-50%); }
+    .faq2-icon::after  { width: 1.5px; height: 10px; transform: translate(-50%,-50%); }
+    .faq2-item.is-open .faq2-icon { border-color: var(--accent); background: #fff4ec; }
+    .faq2-item.is-open .faq2-icon::before,
+    .faq2-item.is-open .faq2-icon::after { background: var(--accent); }
+    .faq2-item.is-open .faq2-icon::after { transform: translate(-50%,-50%) rotate(90deg); opacity: 0; }
+
+    .faq2-a { overflow: hidden; height: 0; transition: height .3s cubic-bezier(.4,0,.2,1); }
+    .faq2-a-inner {
+      padding: 0.9rem 1.25rem 1.15rem;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #5a5550;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity .2s .05s ease, transform .2s .05s ease;
+      border-top: 1px solid #f0ece6;
+    }
+    .faq2-item.is-open .faq2-a-inner { opacity: 1; transform: none; }
+    .faq2-a-inner p { margin: 0 0 .5rem; }
+    .faq2-a-inner p:last-child { margin: 0; }
+    .faq2-a-inner a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .faq2-a-inner a:hover { text-decoration: underline; }
+    .faq2-a-inner strong { color: var(--dark); font-weight: 700; }
+
+    .faq2-group-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1.5px solid #e8e4de;
+    }
+    .faq2-group-label:first-child { margin-top: 0; }
+
+    /* ── CTA Band ── */
+    .jfaq-cta {
+      background: var(--dark);
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .jfaq-cta h2 {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .jfaq-cta p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .jfaq-cta-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .jfaq-cta-solid {
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 13px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .jfaq-cta-solid:hover { background: #ea6c0a; }
+    .jfaq-cta-ghost {
+      background: transparent;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 13px 24px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: border-color .15s, color .15s;
+    }
+    .jfaq-cta-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Footer ── */
+    .evb-footer {
+      background: #0c0b0a;
+      color: rgba(255,255,255,0.55);
+      padding: 2.5rem 1.5rem 2rem;
+      border-top: 3px solid var(--accent);
+    }
+    .evb-footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .evb-footer-brand p { font-size: 0.8rem; line-height: 1.7; margin: 0.5rem 0 0; }
+    .evb-footer-logo { height: 36px; width: auto; opacity: 0.7; margin-bottom: 0.5rem; }
+    .evb-footer-links p {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.75rem;
+    }
+    .evb-footer-links a {
+      display: block;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      transition: color .15s;
+    }
+    .evb-footer-links a:hover { color: var(--accent); }
+    .evb-footer-bottom {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+    .evb-footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; }
+    .evb-footer-bottom a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .jfaq-header { padding: 0 1rem; }
+      .faq2-section  { padding: 2.5rem 0 3rem; }
+      .faq2-header   { padding: 0 1rem; margin-bottom: 1.5rem; }
+      .faq2-shell    { padding: 0 1rem; }
+      .faq2-q        { padding: 1rem; }
+      .faq2-q-text   { font-size: 14px; }
+      .faq2-a-inner  { padding: 0.85rem 1rem 1rem; font-size: 13.5px; }
+      .evb-footer-inner { grid-template-columns: 1fr; }
+      .evb-footer-links { align-items: flex-start; }
+      .evb-footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="jfaq-header">
+    <a href="index.html">
+      <img src="evbbanner.png" alt="East Village Buyers" class="jfaq-logo">
+    </a>
+    <a href="index.html" class="jfaq-back">Back to Home</a>
+  </header>
+
+  <!-- FAQ Section -->
+  <section class="faq2-section" id="faq">
+    <div class="faq2-header">
+      <p class="cp-eyebrow">Questions &amp; Answers</p>
+      <h2>Jewelry Selling FAQ</h2>
+      <p class="faq2-lede">Real answers about selling gold, diamonds, silver, estate jewelry and designer pieces in NYC. Browse by topic below.</p>
+    </div>
+
+    <div class="faq2-shell">
+
+      <div class="faq2-group-label">Getting Started</div>
+      <div class="faq2-panel" id="faq-start">
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What kind of merchandise do you buy?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>At East Village Buyers we buy gold, silver, platinum, diamonds, colored gemstones, sterling flatware, coins, estate and vintage jewelry, and signed designer pieces when authenticity checks out.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">How much can you buy?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>There is no real limit — whether it is one gold earring or a full estate collection, we evaluate and buy based on what you have. For very large lots, text photos to <a href="sms:9176088939">917-608-8939</a> ahead so we can set aside enough time.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">How do appointments in NYC work?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Call or text <a href="tel:9176088939">917-608-8939</a> to schedule time with our appraiser. We are at 39 Avenue A in the East Village, open Sunday–Thursday 12:30–6:30 and Friday 12:30–6. Walk-ins are welcome; for big estate collections, giving us a heads-up helps us reserve dedicated time.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do I need an appointment, or can I just walk in?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Walk-ins are welcome during store hours — most people just show up with a bag. If you want dedicated time without waiting while we assist other customers, texting ahead for a larger lot is a smart move.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">When &amp; how will I get paid?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>We always offer a price on the spot after the appraisal. Same-day cash is what most people choose. For larger purchases, check is available — just tell us what works at the counter.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Is it safe to sell my valuables to East Village Buyers?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes. East Village Buyers operates as Vintage USA Inc with NYC Department of Consumer Affairs license #2070477. We have a real storefront at 39 Avenue A — not a mail-order operation or anonymous kiosk. You watch testing and weighing at the counter before you decide anything.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you offer a mail-in kit?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>We focus on in-person appraisals so you can watch testing and weighing at the counter — no shipping, no revised offers by email a week later. Most customers prefer seeing the process and leaving with cash the same day. Text photos to <a href="sms:9176088939">917-608-8939</a> if you want a rough idea before you visit.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What if I can't visit the store in person?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>The appraisal happens in our shop so you can see everything tested in front of you. If you are visiting NYC before flying home, plan a walk-in during store hours with valid ID — passport works. Send high-quality photos and a description first so we can advise whether a visit is worth the trip.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Can I sell to East Village Buyers from another country?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>We primarily serve walk-in customers in NYC, but visitors from abroad sell to us regularly before flying home. Send photos and details to <a href="sms:9176088939">917-608-8939</a> along with any certifications or appraisals. Different countries have different customs rules, so we will coordinate if shipping is involved.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">How long does the appraisal process take?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Generally 15–30 minutes depending on how many pieces you bring. A large jewelry box or estate lot may take 45 minutes to an hour — we will not rush you out the door.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What should I bring with me to the appraisal?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Bring your jewelry plus valid government-issued photo ID — New York law requires it. Appraisals, GIA certificates, receipts, or original boxes help but are not required. Bring everything you want evaluated; there is no limit on items.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">How are offers calculated?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Based on weight, metal purity, today's spot prices, diamond quality (the 4 Cs), supply and demand, condition, and brand when verified. For diamonds, a GIA or AGS certificate helps the appraiser make a stronger offer. The evaluation is free — you only sell if you accept.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Is your offer negotiable?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>We aim to be fair from the start and walk you through the math at the counter. If you have questions about the number, ask — we are happy to explain. No pressure to sell on the spot; take your time and compare elsewhere if you want.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Will you have to remove the stones from my setting during an appraisal?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Almost never. We evaluate metal and stones in the setting. If removal were ever necessary — very rare — we would ask permission first and could reset the stone without taking it out of your sight.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Location &amp; Reviews</div>
+      <div class="faq2-panel" id="faq-location">
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">How is East Village Buyers reviewed around the web?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Check us on Google, Yelp, and social — we are a neighborhood fixture on Avenue A with real walk-in customers. Ask in the shop if you want references; we have built our business on transparent counter-side testing and same-day payouts.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What is the best way to get to you?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>39 Avenue A, New York, NY 10009 — East Village, between 2nd and 3rd Streets. L train to 1st Ave, 6 train to Astor Place, plenty of buses. Street parking can be tight; subway is easiest. See us on Google Maps for turn-by-turn directions.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What are your store hours?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Sunday–Thursday 12:30–6:30 · Friday 12:30–6. Holidays can shift things — text or call if you are making a special trip and want to double-check.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do customers come from outside the East Village?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>All the time — Brooklyn, Queens, New Jersey, Midtown office workers on lunch, students, families handling estates. No neighborhood requirement; just bring your items and valid photo ID.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Gold &amp; Precious Metals</div>
+      <div class="faq2-panel" id="faq-gold">
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">How is gold jewelry priced?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Roughly: weight × purity × today's spot, minus a fair margin so we can keep the lights on. A 14K stamp is a hint — we still test. Spot changes daily, so the honest answer is "come weigh it." Anyone giving you a firm number blind is guessing.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What types of gold do you buy?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yep — jewelry, scrap, coins, dental gold, the works. Higher karat = more gold per gram, but a fat 10K chain still adds up. Don't leave it in a drawer because it's "only 10K."</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy broken gold jewelry and single earrings?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Really. We buy them every day. Metal doesn't care if the clasp is broken. That one earring? Bring it.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy dental gold?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Seriously. Crowns, bridges, sweeps. Shake out obvious gunk if you can; we'll weigh and test the rest. Weird to sell, normal to us.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy gold coins and bars?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — Eagles, Buffalos, Maples, Krugerrands, Philharmonics, lots of bars and world coins. Packaging is nice if you have it, not required.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What is the difference between gold-plated and gold-filled?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Plated fashion stuff — no. Gold-filled sometimes yes when the stamp shows real weight (like 1/10 14K GF). HGE, GP, gold tone — usually a no. Bring it and we'll tell you in two minutes.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">How do you test gold without a stamp?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes. Old estate gold often has worn or missing stamps. We test the metal instead of guessing from how yellow it looks.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Diamonds &amp; Gemstones</div>
+      <div class="faq2-panel" id="faq-diamonds">
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Can I sell my engagement ring here?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Right here — 39 Avenue A. Bring the ring, any cert, and your ID. We'll grade it in person, explain the number, and keep it low-key. No appointment needed for most people.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy diamonds without a certificate?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>All the time. Certs are nice; lack of one isn't a dealbreaker. We grade in person — cut, color, clarity, carat — and tell you what we see.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy chipped or damaged diamonds?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Often still worth something. Chips and worn prongs matter, but they don't always kill the offer. Bring it; let us look before you assume it's done.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy lab-grown diamonds?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — we'll ID them as lab-grown and price today's lab market, separate from natural stones. Not sure what you have? We'll tell you.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy rubies, sapphires, and emeralds?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Lots of fine colored stones in gold or platinum mountings work. Loose fashion stones with no real metal — usually not. Lab reports help on the expensive stuff.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Silver, Platinum &amp; Coins</div>
+      <div class="faq2-panel" id="faq-silver">
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy sterling flatware and tea sets?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — real .925 flatware, trays, candlesticks, tea sets. We test because plate looks shiny too. EPNS isn't sterling money.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What silver coins do you buy?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yup — Morgans, Peace dollars, Eagles, pre-1965 dimes/quarters/halves. Bring the jar. We'll sort it at the counter.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy platinum wedding bands?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — PT950, PT900, bands with or without diamonds. We test; white gold and platinum aren't the same price.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What types of sterling silver do you buy?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — .925 rings, chains, cuffs, tarnished or shiny. We test first, then weigh.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What is junk silver and do you buy it?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — pre-1965 US silver, rolls, partial collections. Bring the whole tub.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy inherited silverware?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>If it's real sterling, yes. We test because plate lives in those drawers too. Partial sets welcome.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Estate, Designer &amp; Inherited</div>
+      <div class="faq2-panel" id="faq-estate">
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What is the difference between estate, vintage, and antique jewelry?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p><strong>Estate</strong> = previously owned, any age. <strong>Vintage</strong> = a style era (Art Deco, Retro, etc.). <strong>Antique</strong> = usually 100+ years. You don't need the perfect label — bring the box.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy estate jewelry collections?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — one brooch or a whole house. Executors and families welcome. Text photos if it's huge so we're ready for you.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy Tiffany and Cartier jewelry?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>When they're real and the market wants them, yes. Box and papers help; no box still okay. We verify — we don't just take someone's word because it "looks like" Cartier.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What is a maker's mark?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Little stamps or signatures that tell you who made it. Helpful for estate and designer pieces, but we still test metal and stones — a mark alone isn't proof.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy David Yurman jewelry?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>When authentic and condition supports it, yes — David Yurman is a regular walk-in. Bring the piece; we'll verify stamps and construction.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy Mikimoto and pearl jewelry?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Fine pearl strands and signed pearl jewelry can qualify when pearls and clasps are real. Fashion pearls — we'll tell you quickly.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy unworn gift jewelry?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Very normal. Tags, box, no box — we see unworn gifts weekly. No judgment, just an offer.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Appraisal, Pricing &amp; Payout</div>
+      <div class="faq2-panel" id="faq-pricing">
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">How does the appraisal process work?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>We weigh it, test purity, look at any stones and mountings, then walk you through the offer before you decide anything. It's what we would actually pay to buy it — not some inflated insurance number. And it's completely free.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Is the appraisal free?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Completely free. We only make money if you sell and only if you like the price. No appraisal fees at the end.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">How are offers calculated?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>For gold, silver and platinum it's weight times purity times today's spot. Diamonds are the 4Cs plus what the market is paying right now. Designer pieces factor in brand, authenticity, condition and the metal. That old $6000 appraisal from 1995 is a useful story but not today's number.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">How do I get the most for my jewelry?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Bring everything because small pieces add up. Grab any certs or old paperwork if you have them. Check today's gold spot so you have some context going in. Get a second quote if you want. And don't aggressively polish anything that might be plated.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">When &amp; how will I get paid?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Same day cash is the usual deal when you accept. For really large lots we can do a check if that works better for you. Just let us know at the counter.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Is your offer negotiable?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Our number is our best number. We show the math at the counter. You're never stuck saying yes and a lot of people come to us after getting a lowball offer somewhere else.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Why is my offer lower than retail price?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Retail price includes markup, brand, rent and profit. We buy based on metal, stones and what the resale market actually looks like today. We'll explain the gap in a way that makes sense.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Is there a fee if I decline the offer?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>No fee at all. Walk out with your jewelry and nothing changes. We only make money when you sell.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Can you provide a written offer?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Ask at the counter. We're happy to break down weight, karat and price for you. Good for comparing offers or dealing with estate paperwork.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Legal, ID &amp; Safety</div>
+      <div class="faq2-panel" id="faq-legal">
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do I need ID to sell jewelry?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes. New York law requires a valid government photo ID to sell precious metals to a licensed dealer. Driver's license, passport or state ID. Just something current with your photo.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Are you licensed?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes. East Village Buyers, DBA Vintage USA Inc, NYC DCA #2070477. Licensed precious metals and jewelry buyer. Happy to talk about it any time.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Is it safe to sell in person vs. mailing?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>For most people yes. You watch the test, you get paid, you leave. No envelope anxiety, no revised offer email a week later. If you do mail anything anywhere use real insurance and a buyer with a solid reputation.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you report sales to authorities?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>We follow NYC and state rules for licensed dealers. Records and reporting are part of the deal to catch stolen goods. Don't bring anything stolen. It wastes everyone's time and lands you in trouble.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Gemstones &amp; Colored Stones</div>
+      <div class="faq2-panel" id="faq-gemstones-bottom">
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy rubies and sapphires in gold rings?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>When they're real stones in fine mountings, yes. We evaluate the metal and the stone — estate rings with rubies and diamonds are common here.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy pearl necklaces?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Often, when pearls and clasps test real and condition is sellable. Costume pearls on thread with base metal clasps — usually not.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy birthstone jewelry?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>If the band is real gold and stones are real, often yes. Plastic stones in cheap metal — probably not. Bring them; sorting is free.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy cocktail rings with multiple stones?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Bring them. We check if center or side stones are real and what the gold weighs. Some are mostly metal value; some surprise you.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq2-group-label">Quick Answers</div>
+      <div class="faq2-panel" id="faq-quick">
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy broken gold chains?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — every day. Snapped, tangled, one link holding on for dear life. Priced by tested karat and weight.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy single earrings?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — the mate is gone, the gold isn't. Don't toss lone studs or hoops.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Can I sell an entire inherited jewelry box?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — whole box, no sorting required. We'll go through it with you and explain each offer.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What condition does jewelry need to be in?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Usually yes if there's real metal or real stones. A beat-up gold chain is still gold. Diamonds and designer names care more about condition, but "ugly" alone isn't a dealbreaker.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy watches?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Lots of gold and precious-metal watches, yes. Bring it either way and we'll steer you right.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">What merchandise do you not buy?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Costume with no real metal. Gold-plated mall jewelry. Silver plate pretending to be sterling. "Designer" we can't verify. Stolen goods. Loose junk stones with no fine mounting. When you're unsure, bring it — worst case we say no nicely.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy class rings and religious jewelry?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>When there's gold content — class rings, crosses, medals, Stars of David, Italian gold charms. We test and weigh like everything else.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy diamond tennis bracelets?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Yes — diamond tennis bracelets in gold or platinum are common. Missing stones? Still worth a look.</p></div>
+          </div>
+        </div>
+        <div class="faq2-item">
+          <button class="faq2-q" aria-expanded="false">
+            <span class="faq2-q-text">Do you buy pocket watches and vintage watches?</span>
+            <span class="faq2-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq2-a">
+            <div class="faq2-a-inner"><p>Many gold cases and estate watches, yes. Bring the whole piece; we'll separate case value from movement when needed.</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <div class="jfaq-cta">
+    <h2>Ready to Sell? Come See Us.</h2>
+    <p>39 Avenue A, East Village NYC &nbsp;·&nbsp; Walk-ins welcome &nbsp;·&nbsp; Sun–Thu 12:30–6:30 &nbsp;·&nbsp; Fri 12:30–6</p>
+    <div class="jfaq-cta-btns">
+      <a href="sms:9176088939" class="jfaq-cta-solid">Text Photos for a Quote</a>
+      <a href="tel:9176088939" class="jfaq-cta-ghost">Call 917-608-8939</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="evb-footer">
+    <div class="evb-footer-inner">
+      <div class="evb-footer-brand">
+        <img src="evbbanner.png" alt="East Village Buyers" class="evb-footer-logo">
+        <p>39 Avenue A · New York, NY 10009<br>DCA License #2070477 · Vintage USA Inc</p>
+      </div>
+      <div class="evb-footer-links">
+        <p>We Buy &amp; Sell</p>
+        <a href="we-buy-jewelry-nyc.html">Jewelry</a>
+        <a href="we-buy-designer-nyc.html">Designer</a>
+        <a href="we-buy-streetwear-nyc.html">Streetwear</a>
+        <a href="we-buy-watches-nyc.html">Watches</a>
+        <a href="we-buy-electronics-nyc.html">Electronics</a>
+      </div>
+    </div>
+    <div class="evb-footer-bottom">
+      <p>&copy; 2026 East Village Buyers</p>
+      <p><a href="index.html">Return to Homepage</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq2-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item  = btn.closest('.faq2-item');
+        const panel = item.querySelector('.faq2-a');
+        const isOpen = item.classList.contains('is-open');
+
+        const parentPanel = item.closest('.faq2-panel');
+        parentPanel.querySelectorAll('.faq2-item.is-open').forEach(open => {
+          const p = open.querySelector('.faq2-a');
+          p.style.height = p.scrollHeight + 'px';
+          requestAnimationFrame(() => { p.style.height = '0'; });
+          open.classList.remove('is-open');
+          open.querySelector('.faq2-q').setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+          panel.style.height = '0';
+          requestAnimationFrame(() => {
+            panel.style.height = panel.scrollHeight + 'px';
+            panel.addEventListener('transitionend', () => {
+              panel.style.height = 'auto';
+            }, { once: true });
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
